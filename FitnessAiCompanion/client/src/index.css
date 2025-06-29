@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(248, 32%, 95%);
+  --foreground: hsl(225, 15%, 15%);
+  --muted: hsl(240, 4.8%, 95.9%);
+  --muted-foreground: hsl(240, 3.8%, 46.1%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --border: hsl(240, 5.9%, 90%);
+  --input: hsl(240, 5.9%, 90%);
+  --primary: hsl(217, 91%, 60%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(142, 71%, 45%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 4.8%, 95.9%);
+  --accent-foreground: hsl(240, 5.9%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(217, 91%, 60%);
+  --radius: 1.5rem;
+  --dark: hsl(225, 15%, 15%);
+  --light: hsl(0, 0%, 98%);
+  
+  /* Fitness-specific colors */
+  --fitness-blue: hsl(217, 91%, 60%);
+  --fitness-green: hsl(142, 71%, 45%);
+  --fitness-orange: hsl(25, 95%, 53%);
+  --fitness-purple: hsl(262, 83%, 58%);
+  --fitness-gradient-start: hsl(217, 91%, 60%);
+  --fitness-gradient-end: hsl(142, 71%, 45%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(249, 95%, 67%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(142, 71%, 45%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(249, 95%, 67%);
+  --dark: hsl(0, 0%, 98%);
+  --light: hsl(240, 10%, 3.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, hsl(248, 32%, 95%) 0%, hsl(240, 6%, 90%) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-dark {
+    color: var(--dark);
+  }
+  
+  .text-light {
+    color: var(--light);
+  }
+  
+  .bg-dark {
+    background-color: var(--dark);
+  }
+  
+  .bg-light {
+    background-color: var(--light);
+  }
+
+  /* Modern fitness app card styles */
+  .fitness-card {
+    @apply bg-white rounded-3xl border border-gray-100 shadow-sm;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fitness-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Gradient backgrounds inspired by the design */
+  .gradient-bg-blue {
+    background: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(199, 89%, 48%) 100%);
+  }
+  
+  .gradient-bg-green {
+    background: linear-gradient(135deg, hsl(142, 71%, 45%) 0%, hsl(160, 100%, 35%) 100%);
+  }
+  
+  .gradient-bg-orange {
+    background: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(20, 94%, 60%) 100%);
+  }
+  
+  .gradient-bg-purple {
+    background: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(250, 84%, 54%) 100%);
+  }
+  
+  .gradient-bg-main {
+    background: linear-gradient(135deg, var(--fitness-gradient-start) 0%, var(--fitness-gradient-end) 100%);
+  }
+
+  /* Modern glassmorphism effect */
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glassmorphism-dark {
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Stat card styling like the design */
+  .stat-card {
+    @apply bg-white rounded-2xl p-4 border border-gray-100;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(34, 197, 94, 0.05) 100%);
+    transition: all 0.2s ease;
+  }
+  
+  .stat-card:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+  }
+
+  /* Modern button styles */
+  .btn-fitness-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3 font-semibold;
+    background: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(199, 89%, 48%) 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-fitness-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  }
+  
+  .btn-fitness-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full px-6 py-2.5 font-medium;
+    transition: all 0.2s ease;
+  }
+
+  /* Progress bar styles */
+  .progress-bar {
+    @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+    background: linear-gradient(90deg, hsl(217, 91%, 60%) 0%, hsl(142, 71%, 45%) 100%);
+  }
+
+  /* Avatar and profile image styles */
+  .profile-avatar {
+    @apply w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-green-400 flex items-center justify-center text-white font-semibold;
+  }
+
+  /* Typography improvements */
+  .text-fitness-heading {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  
+  .text-fitness-subheading {
+    @apply text-lg font-semibold text-gray-700;
+  }
+  
+  .text-fitness-body {
+    @apply text-base text-gray-600;
+  }
+  
+  .text-fitness-caption {
+    @apply text-sm text-gray-500;
+  }
+
+  /* Animation utilities */
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slideUpFade 0.5s ease-out;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Legacy styles for backward compatibility */
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--fitness-gradient-start) 0%, var(--fitness-gradient-end) 100%);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .meal-section {
+    border-left: 4px solid hsl(142, 71%, 45%);
+  }
+}
